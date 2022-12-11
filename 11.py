@@ -18,7 +18,7 @@ def part1(data):
         "true": 0,
         "false": 0
     }
-    for round in range(20):
+    for round in range(10000):
         for line in data:
             cs = line.strip().split(" ")
             if len(cs) == 2:
@@ -54,11 +54,15 @@ def part1(data):
                         else: 
                             monkeys[current_monkey][i] += int(operand)
                         
-                    monkeys[current_monkey][i] //= 3    
+                    #part1:
+                    #monkeys[current_monkey][i] //= 3
+                    #part2:
+                    monkeys[current_monkey][i] = monkeys[current_monkey][i] % (11 * 7 * 13 * 5 * 3 * 17 * 2 * 19)
                     if(monkeys[current_monkey][i] % divider == 0):
                         result="true"
                     else:
                         result="false"
+                    
                     monkeys[throw[result]].append(monkeys[current_monkey][i])
                     i += 1
                 monkeys[current_monkey] = []
